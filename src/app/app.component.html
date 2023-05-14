@@ -1,38 +1,23 @@
 <h1>Hello Angular</h1>
 
-<button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
-<!-- ngStyle - директирва -->
-<!-- ngstyle нужен для динамики стилей -->
-<!-- <button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
-<div
-  [ngStyle]="{
-    width: '200px',
-    height: '200px',
-    borderRadius: '5px',
-    border: '1px solid green',
-    background: toggleBackground ? 'red' : 'pink'
-  }"
-></div> -->
+<button (click)="toggle = !toggle">Toggle</button>
 
-<!-- ngClass - директирва -->
-<!-- ngClass похож на ngStyle -> также требуется для динамики -->
-
-<!-- ЕСЛИ КЛАССОВ МНОГО, ТО ЖЕЛАТЕЛЬНО ИСПОЛЬЗОВАТЬ ЭТУ ЗАПИСЬ -->
-<p
-  [ngClass]="{
-    red: toggleBackground,
-    blue: !toggleBackground
-  }"
->
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-  asperiores facere temporibus cumque ad vitae, porro nostrum optio nobis vel!
-  Beatae architecto necessitatibus quis placeat. Provident aliquam quod unde
-  quas!
+<!-- * если директива является структурной, и оно позволяет изменять HTML-шаблон, то используем *  -->
+<!-- () если мы bind-им в другую строну, то это круглые скобки -->
+<!-- [] если мы bind-им в одну сторону, то это квадратные скобки -->
+<p *ngIf="toggle" class="red">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, perspiciatis?
 </p>
+<p *ngIf="!toggle" class="blue">Lorem ipsum dolor sit amet.</p>
 
-<!-- ИЛИ -->
-<!-- ЕСЛИ У НАС НЕСКОЛЬКО КЛАССОВ, ТО МОЖНО ИСПОЛЬЗОВАТЬ ТАКОЙ СИНТАКСИС -->
+<!-- ДЛЯ УДОБСТВА МОЖНО ТАКЖЕ ИСПОЛЬЗОВАТЬ ngIf, а дальше else, а дальше с использованием ng-template -->
+<!-- Example: -->
 
-<h2 [class.blue]="!toggleBackground" [class.red]="toggleBackground">
-  ЦВЕТ МЕНЯЕТ ЗДЕСЬ
-</h2>
+<p *ngIf="toggle; else blueP" class="red">
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore ipsum tempora
+  fuga incidunt, recusandae officia? Veritatis officia quam enim asperiores quis
+  nisi tempora cumque iusto itaque, a recusandae, fugit quas?
+</p>
+<ng-template #blueP>
+  <p *ngIf="!toggle" class="blue">Lorem.</p>
+</ng-template>
