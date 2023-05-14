@@ -1,10 +1,14 @@
 <h1>Hello Angular</h1>
 
-<!-- WAY BINDINGS -->
-<!-- <input type="text" [value]="title" (input)="onInput($event)" /> -->
-
-<!-- Для удобства мы в app.module добавили FormsModule в imports -->
-<!-- Квадратные скобки, такие директивы выполняют только связывание -->
-<!-- Для того, чтобы сработало, нужно также внутри квадратной скобки добавить круглую скобку -->
-<input type="text" [(ngModel)]="title" />
-<p>{{ title }}</p>
+<!-- ngStyle - директирва -->
+<!-- ngstyle нужен для динамики стилей -->
+<button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
+<div
+  [ngStyle]="{
+    width: '200px',
+    height: '200px',
+    borderRadius: '5px',
+    border: '1px solid green',
+    background: toggleBackground ? 'red' : 'pink'
+  }"
+></div>
