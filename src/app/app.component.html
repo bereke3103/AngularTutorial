@@ -1,19 +1,10 @@
 <h1>Hello Angular</h1>
 
-<!-- Event Bindings привязка из html в typescript -->
-<input type="text" placeholder="обычный onInput()" (input)="onInput($event)" />
-<input type="text" placeholder="keyup enter" (keyup.enter)="onKeyUp($event)" />
+<!-- WAY BINDINGS -->
+<!-- <input type="text" [value]="title" (input)="onInput($event)" /> -->
 
-<h4>{{ inputValue }}</h4>
-<h4>{{ keyUpValue }}</h4>
-
+<!-- Для удобства мы в app.module добавили FormsModule в imports -->
+<!-- Квадратные скобки, такие директивы выполняют только связывание -->
+<!-- Для того, чтобы сработало, нужно также внутри квадратной скобки добавить круглую скобку -->
+<input type="text" [(ngModel)]="title" />
 <p>{{ title }}</p>
-
-<!-- то, что в квадратной скобке src, мы привязывем html с typescript-ом, и таким bind-им, т.е привязываес -->
-<img [src]="img" alt="" />
-<hr />
-<app-post></app-post>
-<!-- <app-post></app-post>
-<app-post></app-post> -->
-<hr />
-<app-post4></app-post4>
