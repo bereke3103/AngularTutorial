@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Post } from '../app.component';
 
 @Component({
   selector: 'app-post',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent {
-  title = 'Post Component';
+  //Input -> декоратор, означающий, что он принимает от родителя (для данного случае от App.Component.ts)
+
+  @Input() myPost: Post;
+  constructor() {}
 }

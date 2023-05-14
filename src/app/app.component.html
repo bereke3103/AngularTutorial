@@ -1,8 +1,9 @@
 <div class="container">
   <h1>Angular Components</h1>
 
-  <app-post-form></app-post-form>
+  <!-- Если мы хотим получить данные от компонента класса, то используем круглые скобки, и слушаем то метод, который мы создали в Post-form.component-e. И для него создаем новый метод, который будет реализоваться у родителя, в нашем случае app-component -->
+  <app-post-form (onAdd)="updatePosts($event)"></app-post-form>
   <hr />
-  <app-post></app-post>
-  <app-post></app-post>
+  <!-- то, что мы прописала в квадратные скобки, означает, что мы bind-или -->
+  <app-post *ngFor="let p of posts" [myPost]="p"></app-post>
 </div>

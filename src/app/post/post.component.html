@@ -1,4 +1,5 @@
+<!-- Так как теперь в post.component.ts присутствует post(добавили к нему декоратор Input(означаюющий, что он данные принимает от родителя)), мы можем его использовать-->
 <div class="card">
-  <h2>Post title</h2>
-  <p>Text</p>
+  <h2>{{ myPost.title }}</h2>
+  <p>{{ myPost.text }}</p>
 </div>

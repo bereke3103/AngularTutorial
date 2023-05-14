@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { Post } from '../app.component';
 
 @Component({
   selector: 'app-post-form',
@@ -6,5 +7,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./post-form.component.scss'],
 })
 export class PostFormComponent {
-  title = 'Post Form Component';
+  //Декоратор Output() Для того, чтобы эти данные отправить родителю
+  //To emite -> выбрасывать
+  //Нужно обязательно создать экземпляр класса EventEmitter
+  @Output() onAdd: EventEmitter<Post> = new EventEmitter<Post>();
+
+  //Данные для того, чтобы добавить пост
+  title = '';
+  text = '';
+
+  addPost() {
+    if (this.text.trim() && this.title.trim()) {
+      const post: Post = {
+        title: this.title,
+        text: this.text,
+      };
+
+      //Теперь используем созданный экземпляр класса onAdd, и вызываем метод emit, чтоб выбросить наружу те данные, которые мы хотим, в нашем случае созданный post
+      this.onAdd.emit(post);
+
+      //Для того, чтобы их обновить
+      this.title = this.text = '';
+    }
+  }
 }
