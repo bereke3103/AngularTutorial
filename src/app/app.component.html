@@ -1,8 +1,9 @@
 <h1>Hello Angular</h1>
 
+<button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
 <!-- ngStyle - директирва -->
 <!-- ngstyle нужен для динамики стилей -->
-<button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
+<!-- <button (click)="toggleBackground = !toggleBackground">Поменять цвет</button>
 <div
   [ngStyle]="{
     width: '200px',
@@ -11,4 +12,27 @@
     border: '1px solid green',
     background: toggleBackground ? 'red' : 'pink'
   }"
-></div>
+></div> -->
+
+<!-- ngClass - директирва -->
+<!-- ngClass похож на ngStyle -> также требуется для динамики -->
+
+<!-- ЕСЛИ КЛАССОВ МНОГО, ТО ЖЕЛАТЕЛЬНО ИСПОЛЬЗОВАТЬ ЭТУ ЗАПИСЬ -->
+<p
+  [ngClass]="{
+    red: toggleBackground,
+    blue: !toggleBackground
+  }"
+>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
+  asperiores facere temporibus cumque ad vitae, porro nostrum optio nobis vel!
+  Beatae architecto necessitatibus quis placeat. Provident aliquam quod unde
+  quas!
+</p>
+
+<!-- ИЛИ -->
+<!-- ЕСЛИ У НАС НЕСКОЛЬКО КЛАССОВ, ТО МОЖНО ИСПОЛЬЗОВАТЬ ТАКОЙ СИНТАКСИС -->
+
+<h2 [class.blue]="!toggleBackground" [class.red]="toggleBackground">
+  ЦВЕТ МЕНЯЕТ ЗДЕСЬ
+</h2>
