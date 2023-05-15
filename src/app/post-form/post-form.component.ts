@@ -1,4 +1,10 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { Post } from '../app.component';
 
 @Component({
@@ -11,6 +17,9 @@ export class PostFormComponent {
   //To emite -> выбрасывать
   //Нужно обязательно создать экземпляр класса EventEmitter
   @Output() onAdd: EventEmitter<Post> = new EventEmitter<Post>();
+
+  //Этот декоратор применяется к свойству и получает селектор элемента DOM.
+  @ViewChild('titleInput') inputRef: ElementRef;
 
   //Данные для того, чтобы добавить пост
   title = '';
@@ -29,5 +38,10 @@ export class PostFormComponent {
       //Для того, чтобы их обновить
       this.title = this.text = '';
     }
+  }
+
+  focusTitle() {
+    console.log(this.inputRef);
+    this.inputRef.nativeElement.focus();
   }
 }

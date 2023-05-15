@@ -5,6 +5,7 @@
     [(ngModel)]="title"
     class="form-control"
     placeholder="Title..."
+    #titleInput
   />
   <input
     type="text"
@@ -13,5 +14,6 @@
     placeholder="Text..."
   />
 
+  <button class="btn" (click)="focusTitle()">Focus</button>
   <button class="btn" (click)="addPost()">Add post</button>
 </div>

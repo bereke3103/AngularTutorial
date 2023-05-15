@@ -5,5 +5,8 @@
   <app-post-form (onAdd)="updatePosts($event)"></app-post-form>
   <hr />
   <!-- то, что мы прописала в квадратные скобки, означает, что мы bind-или -->
-  <app-post *ngFor="let p of posts" [myPost]="p"></app-post>
+  <app-post *ngFor="let p of posts" [myPost]="p">
+    <small *ngIf="p.text.length > 10; else short">Пост длинный</small>
+    <ng-template #short>Пост короткий</ng-template>
+  </app-post>
 </div>
